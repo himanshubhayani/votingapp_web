@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="table-container voters-table">
+    <h2>Voters</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Has Voted</th>
+      </tr>
+      <tr *ngFor="let voter of voters">
+        <td>{{ voter.name }}</td>
+        <td>{{ voter.has_voted ? 'Voted' : 'No' }}</td>
+      </tr>
+    </table>
+    <input [(ngModel)]="newVoterName" placeholder="Enter voter name">
+    <button (click)="addVoter()">Add Voter</button>
+  </div>
+
+  <div class="table-container candidates-table">
+    <h2>Candidates</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Votes</th>
+      </tr>
+      <tr *ngFor="let candidate of candidates">
+        <td>{{ candidate.name }}</td>
+        <td>{{ candidate.votes }}</td>
+      </tr>
+    </table>
+    <input [(ngModel)]="newCandidateName" placeholder="Enter candidate name">
+    <button (click)="addCandidate()">Add Candidate</button>
+  </div>
+</div>
+
+<div class="vote-inputs">
+  <div class="input-group">
+    <label for="voter">Voter:</label>
+    <select [(ngModel)]="selectedVoter" id="voter">
+      <ng-container *ngFor="let voter of voters">
+        <option [ngValue]="voter" *ngIf="!voter.has_voted">{{ voter.name }}</option>
+      </ng-container>
+    </select>
+  </div>
+
+  <div class="input-group">
+    <label for="candidate">Candidate:</label>
+    <select [(ngModel)]="selectedCandidate" id="candidate">
+      <option *ngFor="let candidate of candidates" [ngValue]="candidate">{{ candidate.name }}</option>
+    </select>
+  </div>
+
+  <button (click)="submitVote()">Submit Vote</button>
+</div>
