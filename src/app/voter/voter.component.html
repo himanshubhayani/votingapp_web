@@ -1,0 +1,17 @@
+<div class="container">
+<div class="table-container voters-table">
+    <h2>Voters</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Has Voted</th>
+      </tr>
+      <tr *ngFor="let voter of voters">
+        <td>{{ voter.name }}</td>
+        <td>{{ voter.has_voted ? 'Voted' : 'No' }}</td>
+      </tr>
+    </table>
+    <input [(ngModel)]="newVoterName" placeholder="Enter voter name">
+    <button (click)="addVoter()">Add Voter</button>
+  </div>
+</div>

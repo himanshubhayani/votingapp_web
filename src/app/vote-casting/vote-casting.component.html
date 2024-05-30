@@ -1,0 +1,19 @@
+<div class="vote-inputs">
+    <div class="input-group">
+      <label for="voter">Voter:</label>
+      <select [(ngModel)]="selectedVoter" id="voter">
+        <ng-container *ngFor="let voter of voters">
+          <option [ngValue]="voter" *ngIf="!voter.has_voted">{{ voter.name }}</option>
+        </ng-container>
+      </select>
+    </div>
+  
+    <div class="input-group">
+      <label for="candidate">Candidate:</label>
+      <select [(ngModel)]="selectedCandidate" id="candidate">
+        <option *ngFor="let candidate of candidates" [ngValue]="candidate">{{ candidate.name }}</option>
+      </select>
+    </div>
+  
+    <button (click)="submitVote()">Submit Vote</button>
+  </div>

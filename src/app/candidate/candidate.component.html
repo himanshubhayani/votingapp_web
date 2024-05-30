@@ -1,0 +1,17 @@
+<div class="container">
+<div class="table-container candidates-table">
+    <h2>Candidates</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Votes</th>
+      </tr>
+      <tr *ngFor="let candidate of candidates">
+        <td>{{ candidate.name }}</td>
+        <td>{{ candidate.votes }}</td>
+      </tr>
+    </table>
+    <input [(ngModel)]="newCandidateName" placeholder="Enter candidate name">
+    <button (click)="addCandidate()">Add Candidate</button>
+  </div>
+</div>
